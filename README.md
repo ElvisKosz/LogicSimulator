@@ -1,2 +1,2 @@
 # LogicSimulator
-Simulate your logicgates.
+Simulate your logic gates.
