@@ -10,11 +10,7 @@ namespace LogicSimulator
         private SpriteBatch _spriteBatch;
 
         static bool Not(bool input) {
-            if(input) {
-                return false;
-            } else {
-                return true;
-            }
+            return !input;
         }    
 
         static bool And(bool input1, bool input2) {
