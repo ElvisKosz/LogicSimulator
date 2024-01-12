@@ -18,11 +18,7 @@ namespace LogicSimulator
             }
         
         static bool Nand(bool input1, bool input2) {
-            if(input1 && input2) {
-                return false;
-            } else {
-                return true;
-            }
+            return ! input1 && input2;
         }
         
         static bool Or(bool input1, bool input2) {
