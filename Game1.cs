@@ -9,6 +9,46 @@ namespace LogicSimulator
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        static bool Not(bool input) {
+            if(input) {
+                return false;
+            } else {
+                return true;
+            }
+        }    
+
+        static bool And(bool input1, bool input2) {
+                return input1 && input2;
+            }
+        
+        static bool Nand(bool input1, bool input2) {
+            if(input1 && input2) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+        static bool Or(bool input1, bool input2) {
+            return input1 || input2;
+        }
+        
+        static bool Nor(bool input1, bool input2) {
+            if(input1 || input2) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+        static bool Xor(bool input1, bool input2) {
+            return (input1 || input2) && input1 != input2;
+        }
+        
+        static bool Xnor(bool input1, bool input2) {
+            return input1 == input2;
+        }
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
