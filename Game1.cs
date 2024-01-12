@@ -11,11 +11,11 @@ namespace LogicSimulator
 
         static bool Not(bool input) {
             return !input;
-        }    
+        }
 
         static bool And(bool input1, bool input2) {
-                return input1 && input2;
-            }
+            return input1 && input2;
+        }
         
         static bool Nand(bool input1, bool input2) {
             return ! input1 && input2;
@@ -26,11 +26,7 @@ namespace LogicSimulator
         }
         
         static bool Nor(bool input1, bool input2) {
-            if(input1 || input2) {
-                return false;
-            } else {
-                return true;
-            }
+            return !input1 || input2;
         }
         
         static bool Xor(bool input1, bool input2) {
@@ -40,6 +36,7 @@ namespace LogicSimulator
         static bool Xnor(bool input1, bool input2) {
             return input1 == input2;
         }
+        
 
         public Game1()
         {
