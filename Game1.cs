@@ -9,6 +9,12 @@ namespace LogicSimulator
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+
+
+
+
+
+
         static bool Not(bool input) {
             return !input;
         }
@@ -36,6 +42,13 @@ namespace LogicSimulator
         static bool Xnor(bool input1, bool input2) {
             return input1 == input2;
         }
+
+
+
+
+
+
+        
         
 
         public Game1()
