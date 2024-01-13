@@ -9,6 +9,11 @@ namespace LogicSimulator
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+
+
+
+
+
         static bool Not(bool input) {
             return !input;
         }
@@ -36,6 +41,23 @@ namespace LogicSimulator
         static bool Xnor(bool input1, bool input2) {
             return input1 == input2;
         }
+        
+        
+        //Dessa kräver 3 inputs vilket blir svårare i simulationen
+
+        static bool MUX(bool input1, bool input2, bool input3) {
+            if(input3) {return input1;} else {return input2;}
+        }
+        
+        //Följande har 2 outputs
+        
+        static (bool,bool) DEMUX(bool input1, bool input2) {
+            if(input2) {return(input1, false);} else {return(false, input1);}
+        }
+
+
+
+
         
 
         public Game1()
