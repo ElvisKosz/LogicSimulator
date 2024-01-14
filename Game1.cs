@@ -55,6 +55,12 @@ namespace LogicSimulator
             if(input2) {return(input1, false);} else {return(false, input1);}
         }
 
+        //Lite småsaker
+
+        static bool Buffer(bool input){
+            return input;
+        }
+
 
 
 
