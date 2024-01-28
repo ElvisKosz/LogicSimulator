@@ -14,6 +14,7 @@ namespace LogicSimulator
         private SpriteBatch spriteBatch;
         Texture2D pixel;
         Rectangle rect;
+        MouseState mouse;
 
 
         public Game1()
@@ -46,6 +47,7 @@ namespace LogicSimulator
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            mouse = Mouse.GetState();
 
 
             base.Update(gameTime);
@@ -55,13 +57,16 @@ namespace LogicSimulator
         {
             GraphicsDevice.Clear(Color.DimGray);
             spriteBatch.Begin();
-            spriteBatch.Draw(pixel, rect, Color.Black);
+            Grid();
+            gate(new Vector2(100, 100), 2, 1, Color.Red);
+
+            Line(new Vector2(mouse.X, mouse.Y), new Vector2(300, 300), 10, Color.Cyan);
             spriteBatch.End();
 
             base.Draw(gameTime);
         }
 
-        protected void Circle(Vector2 centre, int radius, Color color)
+        void Circle(Vector2 centre, int radius, Color color)
         {
             for (double x = 0; x < radius * 2; x++)
             {
@@ -74,6 +79,54 @@ namespace LogicSimulator
                 }
             }
 
+        }
+        void gate(Vector2 position, int inputs, int outputs, Color color){
+            int size = 100;
+            for (int i = 1; i < inputs + 1; i++)
+            {
+                spriteBatch.Draw(pixel, new Rectangle((int)(position.X - size / 2), (int)(position.Y + ((size * 2) / (inputs + 1)) * i), size, 2), Color.White);
+            }
+            for (int i = 1; i < outputs + 1; i++)
+            {
+                spriteBatch.Draw(pixel, new Rectangle((int)(position.X), (int)(position.Y + ((size * 2) / (outputs+1)) * i), (int)(size*2.5), 2), Color.White);
+            }
+            spriteBatch.Draw(pixel, new Rectangle((int)position.X, (int)position.Y, size, size*2), color);
+            Circle(new Vector2(position.X+size, position.Y+size), size, color);
+        }
+        void Line(Vector2 pos1, Vector2 pos2, int thickness, Color color) {
+            float x = pos1.X - pos2.X;
+            float y = pos1.Y - pos2.Y;
+            float k = x / y;
+            float k1 = pos2.Y / pos2.X;
+            int r = (int)Math.Sqrt(x * x + y * y);
+            double v = Math.Atan(-((pos1.X-pos2.X)/(pos1.Y-pos2.Y))) + (Math.PI / 2);
+            //spriteBatch.Draw(pixel, new Rectangle((int)pos1.X, (int)pos1.Y, (int)pos2.X, (int)pos2.Y), Color.Black);
+            Console.WriteLine(v);
+            for (int i = 0; i < r; i++) {
+                spriteBatch.Draw(pixel, new Rectangle((int)(i*Math.Cos(v)+pos2.X), (int)(i * Math.Sin(v)+pos2.Y), thickness, thickness), color);
+            }
+            /*for (int y1 = (int)pos1.Y; y1 < pos2.Y; y1++){
+                for (int x1 = (int)pos1.X; x1 < pos2.X; x1++)
+                {
+                    if ((int)(k*(x1-pos1.X)+pos1.Y) == (int)y1)
+                    {
+                        spriteBatch.Draw(pixel, new Rectangle(x1, y1, thickness, thickness), color);
+                    }
+                }
+            }*/
+            
+        }
+        void Grid()
+        {
+            for(int y = 0; y < 720; y += 100) {
+                for(int x = 0; x < 1280; x += 100) {
+                    //Line(new Vector2(0, y), new Vector2(-1080, y), 1, Color.Black);
+                    //Line(new Vector2(x, 0), new Vector2(x, -720), 1, Color.Black);
+                    spriteBatch.Draw(pixel, new Rectangle(x, 0, 1, 720), Color.Black);
+                    spriteBatch.Draw(pixel, new Rectangle(0, y, 1280, 1), Color.Black);
+                    //spriteBatch.Draw(pixel, new Rectangle(x, y, 2, 1080), Color.Black);
+                }
+            }
         }
     }
 }
