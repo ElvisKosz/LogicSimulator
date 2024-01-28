@@ -105,15 +105,6 @@ namespace LogicSimulator
             for (int i = 0; i < r; i++) {
                 spriteBatch.Draw(pixel, new Rectangle((int)(i*Math.Cos(v)+pos2.X), (int)(i * Math.Sin(v)+pos2.Y), thickness, thickness), color);
             }
-            /*for (int y1 = (int)pos1.Y; y1 < pos2.Y; y1++){
-                for (int x1 = (int)pos1.X; x1 < pos2.X; x1++)
-                {
-                    if ((int)(k*(x1-pos1.X)+pos1.Y) == (int)y1)
-                    {
-                        spriteBatch.Draw(pixel, new Rectangle(x1, y1, thickness, thickness), color);
-                    }
-                }
-            }*/
             
         }
         void Grid()
