@@ -66,7 +66,7 @@ namespace LogicSimulator
             base.Draw(gameTime);
         }
 
-        void Circle(Vector2 centre, int radius, Color color)
+        void Circle(Vector2 center, int radius, Color color)
         {
             for (double x = 0; x < radius * 2; x++)
             {
@@ -74,7 +74,7 @@ namespace LogicSimulator
                 {
                     if (Math.Sqrt(Math.Pow(x - radius, 2) + Math.Pow(y - radius, 2)) < radius)
                     {
-                        spriteBatch.Draw(pixel, new Rectangle((int)x + (int)centre.X - radius, (int)y + (int)centre.Y - radius, 1, 1), color);
+                        spriteBatch.Draw(pixel, new Rectangle((int)x + (int)center.X - radius, (int)y + (int)center.Y - radius, 1, 1), color);
                     }
                 }
             }
